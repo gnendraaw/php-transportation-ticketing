@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <a href="#" class="btn btn-primary btn-icon-split mb-4">
+    <a href="<?=BASE_URL?>/admin/tambahPetugas" class="btn btn-primary btn-icon-split mb-4">
         <span class="icon text-white-50">
             <i class="fas fa-edit"></i>
         </span>

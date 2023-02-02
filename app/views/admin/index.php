@@ -8,7 +8,7 @@
                             <div class="text-xs text-primary font-weight-bold text-uppercase mb-1">
                                 Jumlah Petugas
                             </div>
-                            <h5 class="mb-0 font-weight-bold text-gray-800">14</h5>
+                            <h5 class="mb-0 font-weight-bold text-gray-800"><?=count($data['petugas'])?></h5>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-user fa-2x text-gray-300"></i>

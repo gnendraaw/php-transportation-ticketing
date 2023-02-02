@@ -4,16 +4,18 @@ class Admin extends Controller {
     public function index()
     {
         Middleware::onlyAdmin();
+        $petugas = $this->model('petugas_model')->getAllPetugas();
 
         $data = [
             'title' => 'Admin Dashboard',
             'heading' => 'dashboard',
             'subHeading' => 'dashboard',
             'options' => 'dashboard',
+            'petugas' => $petugas,
         ];
 
         $this->view('templates/header', $data);
-        $this->view('admin/index');
+        $this->view('admin/index', $data);
         $this->view('templates/footer');
     }
 
