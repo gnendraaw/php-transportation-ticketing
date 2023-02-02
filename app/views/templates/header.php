@@ -62,13 +62,13 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item <?= $data['heading']=='admin' ? 'active' : '' ?>">
+            <li class="nav-item <?= $data['heading']=='admin' && $data['subHeading']=='petugas' ? 'active' : '' ?>">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#adminPetugasCollapse"
                     aria-expanded="true" aria-controls="adminPetugasCollapse">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Petugas</span>
                 </a>
-                <div id="adminPetugasCollapse" class="collapse <?= $data['heading']='admin' && $data['subHeading']=='petugas' ? 'show' : '' ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="adminPetugasCollapse" class="collapse <?= $data['heading']=='admin' && $data['subHeading']=='petugas' ? 'show' : '' ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item <?=$data['subHeading']=='petugas' && $data['options']=='daftarPetugas' ? 'active' : ''?>" href="<?= BASE_URL ?>/admin/daftarPetugas">Daftar Petugas</a>
                         <a class="collapse-item <?=$data['subHeading']=='petugas' && $data['options']=='tambahPetugas' ? 'active' : ''?>" href="<?=BASE_URL?>/admin/tambahPetugas">Tambah Petugas</a>
@@ -91,8 +91,25 @@
                     </div>
                 </div>
             </li>
-            <?php endif ?>
 
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <li class="nav-item <?=$data['heading']=='admin' && $data['subHeading']=='transportasi' ? 'active' : ''?>">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTransportasi"
+                    aria-expanded="true" aria-controls="collapseTransportasi">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Transportasi</span>
+                </a>
+                <div id="collapseTransportasi" class="collapse <?=$data['heading']=='admin' && $data['subHeading']=='transportasi' ? 'show' : ''?>" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item <?=$data['subHeading']=='transportasi' && $data['options']=='daftarTransportasi' ? 'active' : ''?>" href="<?=BASE_URL?>/admin/daftarTransportasi">Daftar Transportasi</a>
+                        <a class="collapse-item" href="#">Tipe Transportasi</a>
+                    </div>
+                </div>
+            </li>
+            <?php endif ?>
 
             <hr class="sidebar-divider">
         </ul>

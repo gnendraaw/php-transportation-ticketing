@@ -76,4 +76,21 @@ class Admin extends Controller {
         Flasher::setFlash('Failed to create account');
         $this->directTo('/admin/tambahPetugas');
     }
+
+    public function daftarTransportasi()
+    {
+        $transportasi = $this->model('transportasi_model')->getAllTransportasi();
+
+        $data = [
+            'title' => 'Daftar Transportasi',
+            'heading' => 'admin',
+            'subHeading' => 'transportasi',
+            'options' => 'daftarTransportasi',
+            'transportasi' => $transportasi,
+        ];
+
+        $this->view('templates/header', $data);
+        $this->view('admin/transportasi/index', $data);
+        $this->view('templates/footer');
+    }
 }
