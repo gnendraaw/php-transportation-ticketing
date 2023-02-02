@@ -71,7 +71,7 @@
                 <div id="adminPetugasCollapse" class="collapse <?= $data['heading']='admin' && $data['subHeading']=='petugas' ? 'show' : '' ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item <?=$data['subHeading']=='petugas' && $data['options']=='daftarPetugas' ? 'active' : ''?>" href="<?= BASE_URL ?>/admin/daftarPetugas">Daftar Petugas</a>
-                        <a class="collapse-item" href="#">Tambah Petugas</a>
+                        <a class="collapse-item <?=$data['subHeading']=='petugas' && $data['options']=='tambahPetugas' ? 'active' : ''?>" href="<?=BASE_URL?>/admin/tambahPetugas">Tambah Petugas</a>
                     </div>
                 </div>
             </li>
