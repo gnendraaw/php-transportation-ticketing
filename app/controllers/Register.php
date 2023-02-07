@@ -33,7 +33,11 @@ class Register extends Controller {
         ];
 
         // if username value already registerd, direct user back to register page
-        if ($this->model('penumpang_model')->getPenumpangByUsername($data['username']) > 0)
+        if (
+                $this->model('penumpang_model')->getPenumpangByUsername($data['username']) > 0
+                ||
+                $this->model('petugas_model')->getPetugasByUsername($data['username']) > 0
+            )
         {
             Flasher::setFlash('Username already registered');
 

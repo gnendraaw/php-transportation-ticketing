@@ -34,6 +34,15 @@ class Petugas_model {
         return $this->db->resultSet();
     }
 
+    public function getPetugasByUsername($username)
+    {
+        $query = "SELECT * FROM {$this->table} WHERE username=:username";
+        $this->db->query($query);
+        $this->db->bind('username', $username);
+
+        return $this->db->single();
+    }
+
     // query petugas and level data based on username and password
     public function getPetugasByUsernameAndPassword($data)
     {
