@@ -9,5 +9,6 @@ class Logout extends Controller {
 
             $this->directTo();
         }
+        Middleware::onlyNotLoggedIn();
     }
 }

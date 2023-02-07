@@ -29,6 +29,8 @@ class Middleware {
                 header('location: ' . BASE_URL . '/admin');
                 exit;
             }
+            header('location: ' . BASE_URL);
+            exit;
         }
     }
 
