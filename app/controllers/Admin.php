@@ -24,6 +24,7 @@ class Admin extends Controller {
         Middleware::onlyAdmin();
 
         $petugas = $this->model('petugas_model')->getAllPetugas();
+        $level = $this->model('level_model')->getAllLevel();
 
         $data = [
             'title' => 'Daftar Petugas',
@@ -31,6 +32,7 @@ class Admin extends Controller {
             'subHeading' => 'petugas',
             'options' => 'daftarPetugas',
             'petugas' => $petugas,
+            'level' => $level,
         ];
 
         $this->view('templates/header', $data);
@@ -71,10 +73,10 @@ class Admin extends Controller {
         if ($this->model('petugas_model')->addPetugas($data) > 0)
         {
             Flasher::setFlash('Account registered!');
-            $this->directTo('/admin/tambahPetugas');
+            $this->directTo('/admin/daftarPetugas');
         }
         Flasher::setFlash('Failed to create account');
-        $this->directTo('/admin/tambahPetugas');
+        $this->directTo('/admin/daftarPetugas');
     }
 
     public function daftarTransportasi()
