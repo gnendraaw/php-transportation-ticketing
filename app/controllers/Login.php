@@ -26,22 +26,35 @@ class Login extends Controller {
         $data['password'] = md5($data['password']);
 
         $petugas = $this->model('petugas_model')->getPetugasByUsernameAndPassword($data);
+        $penumpang = $this->model('penumpang_model')->getPenumpangByUsernameAndPassword($data);
 
-        if ($petugas > 0)
+        if (!$petugas && !$penumpang)
         {
-            unset($_SESSION['user']);
+            Flasher::setFlash('Incorrect username or password');
 
+            $this->directTo('/login');
+        }
+        if ($petugas)
+        {
             $_SESSION['user'] = [
-                'id_penumpang' => $petugas['id_penumpang'],
+                'id_user' => $petugas['id_petugas'],
                 'username' => $petugas['username'],
-                'nama_penumpang' => $petugas['nama_penumpang'],
+                'nama_user' => $petugas['nama_petugas'],
                 'level' => $petugas['nama_level'],
             ];
 
             $this->directTo($_SESSION['user']['level']=='admin' ? '/admin' : '/petugas');
         }
+        if ($penumpang) 
+        {
+            $_SESSION['user'] = [
+                'id_user' => $penumpang['id_penumpang'],
+                'username' => $penumpang['username'],
+                'nama_penumpang' => $penumpang['nama_penumpang'],
+                'level' => 'penumpang',
+            ];
 
-        Flasher::setFlash('Incorrect username or password!');
-        $this->directTo('/login');
+            $this->directTo();
+        }
     }
 }
