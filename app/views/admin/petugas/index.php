@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <a href="#" class="btn btn-primary btn-icon-split mb-4" data-toggle="modal" data-target="#createPetugasModal">
+    <a href="#" class="btn btn-primary btn-icon-split mb-4" data-toggle="modal" data-target="#adminPetugasModal" id="admin-tambah-petugas-btn">
         <span class="icon text-white-50">
             <i class="fas fa-edit"></i>
         </span>
@@ -18,16 +18,30 @@
                             <th>#</th>
                             <th>Nama Petugas</th>
                             <th>Username</th>
+                            <th>Level</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="admin-petugas-table">
                         <?php foreach($data['petugas'] as $petugas): ?>
                             <tr>
                                 <td>
-                                    actions
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                            aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Aksi</div>
+                                            <button class="dropdown-item admin-edit-petugas-btn" data-petugasid="<?=$petugas['id_petugas']?>" data-toggle="modal" data-target="#adminPetugasModal">Edit</button>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item text-danger" href="#">Hapus</a>
+                                        </div>
+                                    </div>
                                 </td>
                                 <td><?= $petugas['nama_petugas'] ?></td>
                                 <td><?= $petugas['username'] ?></td>
+                                <td><?= $petugas['nama_level'] ?></td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>
@@ -36,6 +50,7 @@
                             <th>#</th>
                             <th>Nama Petugas</th>
                             <th>Username</th>
+                            <th>Level</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -45,7 +60,7 @@
 </div>
 
     <!-- Create Petugas Modal-->
-    <div class="modal fade" id="createPetugasModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="adminPetugasModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

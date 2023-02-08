@@ -79,6 +79,24 @@ class Admin extends Controller {
         $this->directTo('/admin/daftarPetugas');
     }
 
+    public function updatePetugas($id)
+    {
+        $data = [
+            'id_petugas' => $id,
+            'username' => $_POST['username'],
+            'nama_petugas' => $_POST['nama'],
+            'id_level' => $_POST['level'],
+        ];
+
+        if ($this->model('petugas_model')->updatePetugas($data) > 0)
+        {
+            Flasher::setFlash('Account updated!');
+            $this->directTo('/admin/daftarPetugas');
+        }
+        Flasher::setFlash('Failed to update account!');
+        $this->directTo('/admin/daftarPetugas');
+    }
+
     public function daftarTransportasi()
     {
         $transportasi = $this->model('transportasi_model')->getAllTransportasi();
@@ -94,5 +112,10 @@ class Admin extends Controller {
         $this->view('templates/header', $data);
         $this->view('admin/transportasi/index', $data);
         $this->view('templates/footer');
+    }
+
+    public function getPetugasData()
+    {
+        echo json_encode($this->model('petugas_model')->getPetugasById($_POST['id_petugas']));
     }
 }

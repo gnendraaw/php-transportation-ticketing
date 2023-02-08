@@ -25,10 +25,24 @@ class Petugas_model {
         return $this->db->rowCount();
     }
 
+    public function updatePetugas($data)
+    {
+        $query = "UPDATE {$this->table} SET username=:username, nama_petugas=:nama_petugas, id_level=:id_level WHERE id_petugas=:id_petugas";
+        $this->db->query($query);
+        $this->db->bind('username', $data['username']);
+        $this->db->bind('nama_petugas', $data['nama_petugas']);
+        $this->db->bind('id_level', $data['id_level']);
+        $this->db->bind('id_petugas', $data['id_petugas']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
     // query all petugas data
     public function getAllPetugas()
     {
-        $query = "SELECT * FROM {$this->table} ORDER BY nama_petugas ASC";
+        $query = "SELECT p.id_petugas, p.username, p.nama_petugas, l.id_level, l.nama_level FROM {$this->table} as p LEFT JOIN level AS l ON p.id_level=l.id_level ORDER BY nama_petugas ASC";
         $this->db->query($query);
 
         return $this->db->resultSet();
@@ -51,6 +65,15 @@ class Petugas_model {
         $this->db->query($query);
         $this->db->bind('username', $data['username']);
         $this->db->bind('password', $data['password']);
+
+        return $this->db->single();
+    }
+
+    public function getPetugasById($id) 
+    {
+        $query = "SELECT * FROM {$this->table} WHERE id_petugas=:id";
+        $this->db->query($query);
+        $this->db->bind('id', $id);
 
         return $this->db->single();
     }
