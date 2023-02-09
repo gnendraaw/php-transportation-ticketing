@@ -39,6 +39,17 @@ class Petugas_model {
         return $this->db->rowCount();
     }
 
+    public function deletePetugas($data)
+    {
+        $query = "DELETE FROM {$this->table} WHERE id_petugas=:id";
+        $this->db->query($query);
+        $this->db->bind('id', $data['id_petugas']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    } 
+
     // query all petugas data
     public function getAllPetugas()
     {

@@ -97,6 +97,21 @@ class Admin extends Controller {
         $this->directTo('/admin/daftarPetugas');
     }
 
+    public function deletePetugas()
+    {
+        $data = [
+            'id_petugas' => $_POST['id'],
+        ];
+
+        if ($this->model('petugas_model')->deletePetugas($data) > 0)
+        {
+            Flasher::setFlash('Account deleted!');
+            $this->directTo('/admin/daftarPetugas');
+        }
+        Flasher::setFlash('Failed to delete account');
+        $this->directTo('/admin/daftarPetugas');
+    }
+
     public function daftarTransportasi()
     {
         $transportasi = $this->model('transportasi_model')->getAllTransportasi();

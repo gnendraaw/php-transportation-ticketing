@@ -99,7 +99,7 @@
 
     <!-- Page level custom scripts -->
     <script src="<?= BASE_URL ?>/js/demo/datatables-demo.js"></script>
-    <script src="<?=BASE_URL?>/js/admin-script.js"></script>
+    <script src="<?= BASE_URL ?>/js/admin-petugas.js"></script>
 </body>
 
 </html>

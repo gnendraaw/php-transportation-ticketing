@@ -1,4 +1,14 @@
-$(document).ready(function() {
+    $(document).ready(function() {
+        $('.admin-delete-petugas-btn').on('click', function() {
+            const id = $(this).parents('.petugas-row').data('petugasid')
+            console.log('id', id)
+
+            modal = $('#adminDeletePetugasModal')
+
+            modal.find('input[type=hidden]').val(id)
+            console.log('clicked')
+        })
+
     $('.admin-edit-petugas-btn').on('click', function() {
         const id = $(this).data('petugasid')
         console.log('id', id)
@@ -49,4 +59,4 @@ $(document).ready(function() {
         modal.find('.modal-title').html('Tambah Data Petugas')
         modal.find('button[type=submit]').html('Tambah')
     }
-})
+    })

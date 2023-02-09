@@ -1,4 +1,8 @@
 <div class="container-fluid">
+    <div class="col-lg-6 p-0">
+        <?php Flasher::flash(); ?>
+    </div>
+
     <a href="#" class="btn btn-primary btn-icon-split mb-4" data-toggle="modal" data-target="#adminPetugasModal" id="admin-tambah-petugas-btn">
         <span class="icon text-white-50">
             <i class="fas fa-edit"></i>
@@ -23,7 +27,7 @@
                     </thead>
                     <tbody id="admin-petugas-table">
                         <?php foreach($data['petugas'] as $petugas): ?>
-                            <tr>
+                            <tr class="petugas-row" data-petugasid="<?=$petugas['id_petugas']?>">
                                 <td>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
@@ -35,7 +39,7 @@
                                             <div class="dropdown-header">Aksi</div>
                                             <button class="dropdown-item admin-edit-petugas-btn" data-petugasid="<?=$petugas['id_petugas']?>" data-toggle="modal" data-target="#adminPetugasModal">Edit</button>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item text-danger" href="#">Hapus</a>
+                                            <button class="dropdown-item admin-delete-petugas-btn" data-toggle="modal" data-target="#adminDeletePetugasModal" data-petugasid="<?=$petugas['id_petugas']?>">Hapus</button>
                                         </div>
                                     </div>
                                 </td>
@@ -98,6 +102,29 @@
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Simpan</button>
                 </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Petugas Modal-->
+    <div class="modal fade" id="adminDeletePetugasModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Yakin hapus data petugas?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Klik tombol "hapus" untuk melanjutkan aksi</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                    <form action="<?=BASE_URL?>/admin/deletePetugas" method="post">
+                    <input type="hidden" value="" name="id">
+                    <input type="submit" class="btn btn-danger" value="Hapus">
+                    </form>
                 </div>
             </div>
         </div>
