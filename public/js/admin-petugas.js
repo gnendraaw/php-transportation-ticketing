@@ -10,7 +10,7 @@
         })
 
     $('.admin-edit-petugas-btn').on('click', function() {
-        const id = $(this).data('petugasid')
+        const id = $(this).parents('.petugas-row').data('petugasid')
         console.log('id', id)
 
         $.ajax({
