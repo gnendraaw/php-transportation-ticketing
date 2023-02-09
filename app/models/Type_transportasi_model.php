@@ -16,4 +16,16 @@ class Type_transportasi_model {
 
         return $this->db->resultSet();
     }
+
+    public function addTipeTransportasi($data)
+    {
+        $query = "INSERT INTO {$this->table} VALUES(NULL, :nama, :keterangan)";
+        $this->db->query($query);
+        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('keterangan', $data['keterangan']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
 }

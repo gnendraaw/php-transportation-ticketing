@@ -138,4 +138,41 @@ class Admin extends Controller {
     {
         echo json_encode($this->model('petugas_model')->getPetugasById($_POST['id_petugas']));
     }
+
+    public function tipeTransportasi()
+    {
+        Middleware::onlyAdmin();
+
+        $tipeTransportasi = $this->model('type_transportasi_model')->getAllTypeTransportasi();
+
+        $data = [
+            'title' => 'Tipe Transportasi',
+            'heading' => 'admin',
+            'subHeading' => 'transportasi',
+            'options' => 'tipeTransportasi',
+            'tipeTransportasi' => $tipeTransportasi,
+        ];
+
+        $this->view('templates/header', $data);
+        $this->view('admin/tipe_transportasi/index', $data);
+        $this->view('templates/footer');
+    }
+
+    public function storeTipeTransportasi()
+    {
+        Middleware::onlyAdmin();
+
+        $data = [
+            'nama' => $_POST['namaTipe'],
+            'keterangan' => $_POST['keteranganTipe'],
+        ];
+
+        if ($this->model('type_transportasi_model')->addTipeTransportasi($data) > 0)
+        {
+            Flasher::setFlash('Tipe Transportasi sukses ditambahkan!');
+            $this->directTo('/admin/tipeTransportasi');
+        }
+        Flasher::setFlash('Gagal menambahkan tipe transporasi');
+        $this->directTo('/admin/tipeTransportasi');
+    }
 }

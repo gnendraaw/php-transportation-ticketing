@@ -104,7 +104,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item <?=$data['subHeading']=='transportasi' && $data['options']=='daftarTransportasi' ? 'active' : ''?>" href="<?=BASE_URL?>/admin/daftarTransportasi">Daftar Transportasi</a>
-                        <a class="collapse-item" href="#">Tipe Transportasi</a>
+                        <a class="collapse-item <?=$data['subHeading']=='transportasi' && $data['options']=='tipeTransportasi' ? 'active': ''?>" href="<?=BASE_URL?>/admin/tipeTransportasi">Tipe Transportasi</a>
                     </div>
                 </div>
             </li>
