@@ -38,6 +38,7 @@
         modal.find('#namaInput').val(data.nama_petugas)
         modal.find('#usernameInput').val(data.username)
         modal.find('#levelInput').val(data.id_level)
+        modal.find('input[type=hidden]').val(id)
 
         // modal looks
         modal.find('.modal-title').html('Ubah Data Petugas')

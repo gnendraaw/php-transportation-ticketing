@@ -78,6 +78,7 @@
                 <form action="<?=BASE_URL?>/admin/storePetugas" method="POST">
                     <div class="form-group">
                         <label for="namaInput">Nama Petugas</label>
+                        <input type="hidden" name="id" value="">
                         <input type="text" class="form-control" name="nama" id="namaInput" required maxlength="32" autofocus>
                         <small class="text-small form-text">Masukkan nama petugas pada kolom ini</small>
                     </div>

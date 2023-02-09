@@ -79,10 +79,15 @@ class Admin extends Controller {
         $this->directTo('/admin/daftarPetugas');
     }
 
-    public function updatePetugas($id)
+    public function updatePetugas()
     {
+        if (empty($_POST))
+        {
+            $this->view('not_found/index');
+            exit;
+        }
         $data = [
-            'id_petugas' => $id,
+            'id_petugas' => $_POST['id'],
             'username' => $_POST['username'],
             'nama_petugas' => $_POST['nama'],
             'id_level' => $_POST['level'],
