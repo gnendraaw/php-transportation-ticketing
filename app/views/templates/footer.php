@@ -100,6 +100,7 @@
     <!-- Page level custom scripts -->
     <script src="<?= BASE_URL ?>/js/demo/datatables-demo.js"></script>
     <script src="<?= BASE_URL ?>/js/admin-petugas.js"></script>
+    <script src="<?= BASE_URL ?>/js/admin-tipe-transportasi.js"></script>
 </body>
 
 </html>

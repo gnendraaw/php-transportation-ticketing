@@ -26,7 +26,7 @@
                     </thead>
                     <tbody id="admin-petugas-table">
                         <?php foreach($data['tipeTransportasi'] as $tipe): ?>
-                            <tr class="petugas-row" data-petugasid="<?=$tipe['id_type_transportasi']?>">
+                            <tr class="tipe-transportasi-row" data-tipetransportasiid="<?=$tipe['id_type_transportasi']?>">
                                 <td>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
