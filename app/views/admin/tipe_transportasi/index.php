@@ -36,7 +36,7 @@
                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                             aria-labelledby="dropdownMenuLink">
                                             <div class="dropdown-header">Aksi</div>
-                                            <button class="dropdown-item admin-edit-tipe-btn" data-toggle="modal" data-target="#adminPetugasModal">Edit</button>
+                                            <button class="dropdown-item admin-edit-tipe-btn" data-toggle="modal" data-target="#adminTipeTransportasiModal">Edit</button>
                                             <div class="dropdown-divider"></div>
                                             <button class="dropdown-item admin-delete-tipe-btn" data-toggle="modal" data-target="#adminDeletePetugasModal">Hapus</button>
                                         </div>

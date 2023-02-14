@@ -158,6 +158,11 @@ class Admin extends Controller {
         $this->view('templates/footer');
     }
 
+    public function getTipeTransportasiData()
+    {
+        echo json_encode($this->model('type_transportasi_model')->getTipeTransportasiById($_POST['id_tipe_transportasi']));
+    }
+
     public function storeTipeTransportasi()
     {
         Middleware::onlyAdmin();

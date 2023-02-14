@@ -28,4 +28,13 @@ class Type_transportasi_model {
 
         return $this->db->rowCount();
     }
+
+    public function getTipeTransportationById($id)
+    {
+        $query = "SELECT * FROM {$this->table} WHERE id_type_transportasi=:id";
+        $this->db->query($query);
+        $this->db->bind('id', $id);
+
+        return $this->db->single();
+    }
 }
