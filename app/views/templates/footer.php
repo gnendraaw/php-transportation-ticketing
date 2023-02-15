@@ -130,10 +130,12 @@
                     method: "post",
                     success: function(data) {
                         console.log('data', data)
+                        modal.find('#namaTipeInput').val(data['nama_type'])
+                        modal.find('#keteranganTipeInput').val(data['keterangan'])
                     },
                 })
-                    })
-                })
+            })
+        })
     </script>
 </body>
 

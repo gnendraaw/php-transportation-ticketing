@@ -46,4 +46,17 @@ class Type_transportasi_model {
 
         return $this->db->single();
     }
+
+    public function updateTipeTransportasiById($data)
+    {
+        $query = "UPDATE {$this->table} SET nama_type=:nama, keterangan=:keterangan WHERE id_type_transportasi=:id";
+        $this->db->query($query);
+        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('keterangan', $data['keterangan']);
+        $this->db->bind('id', $data['id']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
 }

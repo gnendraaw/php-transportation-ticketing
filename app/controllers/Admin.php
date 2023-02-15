@@ -180,4 +180,23 @@ class Admin extends Controller {
         Flasher::setFlash('Gagal menambahkan tipe transporasi');
         $this->directTo('/admin/tipeTransportasi');
     }
+
+    public function updateTipeTransportasi()
+    {
+        Middleware::onlyAdmin();
+
+        $data = [
+            'id' => $_POST['id'],
+            'nama' => $_POST['namaTipe'],
+            'keterangan' => $_POST['keteranganTipe'],
+        ];
+
+        if ($this->model('type_transportasi_model')->updateTipeTransportasiById($data) > 0)
+        {
+            Flasher::setFlash('Tipe transportasi sukses dirubah!', 'success');
+            $this->directTo('/admin/tipeTransportasi');
+        }
+        Flasher::setFlash('Gagal mengubah tipe transporasi');
+        $this->directTo('/admin/tipeTransportasi');
+    }
 }
