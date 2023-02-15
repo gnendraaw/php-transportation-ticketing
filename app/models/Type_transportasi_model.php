@@ -37,4 +37,13 @@ class Type_transportasi_model {
 
         return $this->db->single();
     }
+
+    public function getTipeTransportasiData($data)
+    {
+        $query = "SELECT * FROM {$this->table} WHERE id_type_transportasi=:id";
+        $this->db->query($query);
+        $this->db->bind('id', $data['id']);
+
+        return $this->db->single();
+    }
 }

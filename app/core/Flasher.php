@@ -1,10 +1,11 @@
 <?php
 
 class Flasher {
-    public static function setFlash($msg)
+    public static function setFlash($msg, $type='danger')
     {
         $_SESSION['flash'] = [
             'msg' => $msg,
+            'type' => $type,
         ];
     }
 
@@ -12,7 +13,7 @@ class Flasher {
     {
         if(isset($_SESSION['flash']))
         {
-            echo '<div class="card shadow border-bottom-danger mb-4 bg-danger">
+            echo '<div class="card shadow mb-4 bg-'.$_SESSION['flash']['type'].'">
                     <div class="card-body">
                         <p class="m-0 text-white">'.$_SESSION['flash']['msg'].'</p>
                     </div>

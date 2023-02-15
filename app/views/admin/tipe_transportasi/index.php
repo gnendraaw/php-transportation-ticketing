@@ -66,7 +66,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Tipe Transportasi</h5>
+                    <h5 class="modal-title" id="adminTipeTransportasiTitle">Tambah Data Tipe Transportasi</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -75,6 +75,7 @@
                 <form action="<?=BASE_URL?>/admin/storeTipeTransportasi" method="POST">
                     <div class="form-group">
                         <label for="namaTipeInput">Nama Tipe</label>
+                        <input type="hidden" name="id" value="">
                         <input type="text" name="namaTipe" id="namaTipeInput" class="form-control" maxlength="32" required autofocus>
                         <small class="text-small form-text">Masukkan tipe transportasi pada kolom ini</small>
                     </div>

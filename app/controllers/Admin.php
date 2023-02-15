@@ -160,7 +160,7 @@ class Admin extends Controller {
 
     public function getTipeTransportasiData()
     {
-        echo json_encode($this->model('type_transportasi_model')->getTipeTransportasiById($_POST['id_tipe_transportasi']));
+        echo json_encode($this->model('type_transportasi_model')->getTipeTransportationById($_POST['id_tipe_transportasi']));
     }
 
     public function storeTipeTransportasi()
@@ -174,7 +174,7 @@ class Admin extends Controller {
 
         if ($this->model('type_transportasi_model')->addTipeTransportasi($data) > 0)
         {
-            Flasher::setFlash('Tipe Transportasi sukses ditambahkan!');
+            Flasher::setFlash('Tipe Transportasi sukses ditambahkan!', 'success');
             $this->directTo('/admin/tipeTransportasi');
         }
         Flasher::setFlash('Gagal menambahkan tipe transporasi');

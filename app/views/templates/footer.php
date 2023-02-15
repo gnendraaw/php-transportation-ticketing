@@ -100,7 +100,41 @@
     <!-- Page level custom scripts -->
     <script src="<?= BASE_URL ?>/js/demo/datatables-demo.js"></script>
     <script src="<?= BASE_URL ?>/js/admin-petugas.js"></script>
-    <script src="<?= BASE_URL ?>/js/admin-tipe-transportasi.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#admin-tambah-petugas-btn').on('click', function() {
+                modal = $('#adminTipeTransportasiModal')
+
+                modal.find('#adminTipeTransportasiTitle').html('Tambah Data Tipe Transportasi')
+                modal.find('form').attr('action', '/transportation-ticketing/public/admin/storeTipeTransportasi')
+                modal.find('#namaTipeInput').val('')
+                modal.find('#keteranganTipeInput').val('')
+                modal.find('button[type=submit]').html('Tambah')
+            })
+
+            $('.tipe-transportasi-row').on('click', '.admin-edit-tipe-btn', function() {
+                const id = $(this).parents('.tipe-transportasi-row').data('tipetransportasiid')
+                console.log('id', id)
+
+                modal = $('#adminTipeTransportasiModal')
+
+                modal.find('#adminTipeTransportasiTitle').html('Ubah Data Tipe Transportasi')
+                modal.find('input[type=hidden]').val(id)
+                modal.find('form').attr('action', '/transportation-ticketing/public/admin/updateTipeTransportasi')
+                modal.find('button[type=submit]').html('Ubah')
+
+                $.ajax({
+                    url: "/transportation-ticketing/public/admin/getTipeTransportasiData",
+                    data: {id_tipe_transportasi: id},
+                    dataType: "json",
+                    method: "post",
+                    success: function(data) {
+                        console.log('data', data)
+                    },
+                })
+                    })
+                })
+    </script>
 </body>
 
 </html>
